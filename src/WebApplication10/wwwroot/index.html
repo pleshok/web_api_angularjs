@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.js"></script>
+    <script src="app.js"></script>
+    <title></title>
+</head>
+<body ng-controller="directoriesController">
+    <table>
+        <thead>
+            <tr>
+                <th>Less 10 mb</th>
+                <th>10 mb - 50 mb</th>
+                <th>More 100 mb</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <p><strong>Current path:</strong>  </p>
+    
+
+    <div>
+        <ul class="list-group">
+            <li class="list-group-item" ng-click="getDir('-1')"><strong>..</strong></li>
+            <li class="list-group-item" ng-repeat="(key, value) in Directories.Children" ng-click="getDir(key)">{{value}}</li>
+        </ul>
+    </div>
+</body>
+</html>
