@@ -11,7 +11,7 @@
     <title></title>
 </head>
 <body ng-controller="directoriesController">
-    <table>
+    <table class="table-bordered table-hover">
         <thead>
             <tr>
                 <th>Less 10 mb</th>
@@ -19,15 +19,15 @@
                 <th>More 100 mb</th>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{Directories.Sf_count}}</td>
+                <td>{{Directories.Mf_count}}</td>
+                <td>{{Directories.Lf_count}}</td>
             </tr>
         </thead>
         <tbody></tbody>
     </table>
 
-    <p><strong>Current path:</strong>  </p>
+    <p><strong>Current path:</strong> {{Directories.CurrentDir}} </p>
     
 
     <div>
@@ -35,6 +35,8 @@
             <li class="list-group-item" ng-click="getDir('-1')"><strong>..</strong></li>
             <li class="list-group-item" ng-repeat="(key, value) in Directories.Children" ng-click="getDir(key)">{{value}}</li>
         </ul>
-    </div>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="file in Directories.Files" >{{file}}</li>
+        </ul></div>
 </body>
 </html>

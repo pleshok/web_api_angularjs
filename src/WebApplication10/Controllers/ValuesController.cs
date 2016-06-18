@@ -23,13 +23,13 @@ namespace WebApplication10.Controllers
         {
             int key = 0;
             d.Children.Clear();
+            d.CurrentDir = "root";
             foreach (var s in Directory.GetLogicalDrives().ToList())
             {
                 d.Children.Add(key, s);
                 key++;
+                
             }
-
-            d.CurrentDir = "root";
             return d;
         }
 
@@ -37,6 +37,10 @@ namespace WebApplication10.Controllers
         [HttpGet("{id}")]
         public MyDirectories Get(int id)
         {
+            d.Sf_count = 0;
+            d.Mf_count = 0;
+            d.Lf_count = 0;
+
             string path;
             if (id == -1)
             {
@@ -47,6 +51,7 @@ namespace WebApplication10.Controllers
                 else {
                     int k = 0;
                     d.Children.Clear();
+                    d.Files.Clear();
                     foreach (var s in Directory.GetLogicalDrives().ToList())
                     {
                         d.Children.Add(k, s);
@@ -72,13 +77,16 @@ namespace WebApplication10.Controllers
                     d.Children.Add(key, item);
                     key++;
                 }
-           
-            foreach (var item in Directory.EnumerateFiles(path))
-            {
-                d.Files.Add(item.Substring(path.Length));
-            }
+
+                foreach (var item in Directory.EnumerateFiles(path))
+                {
+                    d.Files.Add(item.Substring(path.Length));
+                }
             }
             catch (IOException io_ex) { }
+            catch (UnauthorizedAccessException ua_ex) { }
+            
+            d.CountFilesSize(path);
             d.CurrentDir = path;
             if (Directory.GetParent(path) != null)
                 d.ParentDir = Directory.GetParent(path).FullName;

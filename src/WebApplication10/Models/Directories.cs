@@ -21,5 +21,36 @@ namespace WebApplication10.Models
         {
             Children = new Dictionary<int, string>();
         }
+
+        public void CountFilesSize(string path)
+        {
+            long small = 10485760;
+            long medium = 52428800;
+            long large = 104857600;
+            try
+            {
+                DirectoryInfo di = new DirectoryInfo(path);
+                IEnumerable<FileInfo> fi = di.EnumerateFiles("*.*", SearchOption.TopDirectoryOnly);
+                foreach (var file in fi)
+                {
+                    if (file.Length <= small)
+                        this.Sf_count++;
+                    else if (small < file.Length && file.Length <= medium)
+                        this.Mf_count++;
+                    else if (file.Length > large)
+                        this.Lf_count++;
+                }
+                try
+                {
+                    foreach (var dir in Directory.EnumerateDirectories(path))
+                    {
+                        this.CountFilesSize(dir);
+                    }
+                }
+                catch (Exception) { }
+            }
+            catch (UnauthorizedAccessException) { }
+            catch (IOException) { }
+        }
     }
 }
