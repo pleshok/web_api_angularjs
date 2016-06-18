@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "Microsoft.AspNet.WebApi.Client": "5.2.2",
     "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
@@ -20,7 +21,11 @@
   },
 
   "frameworks": {
-    "net461": { }
+    "net461": {
+      "frameworkAssemblies": {
+        "System.Net.Http.WebRequest": "4.0.0.0"
+      }
+    }
   },
 
   "buildOptions": {

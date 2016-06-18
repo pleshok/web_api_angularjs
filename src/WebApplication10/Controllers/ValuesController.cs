@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using WebApplication10.Models;
+using System.Net.Http;
+using System.Net.Http.Formatting;
+using System.Net;
 
 namespace WebApplication10.Controllers
 {
@@ -19,13 +22,14 @@ namespace WebApplication10.Controllers
         public MyDirectories Get()
         {
             int key = 0;
+            d.Children.Clear();
             foreach (var s in Directory.GetLogicalDrives().ToList())
             {
                 d.Children.Add(key, s);
                 key++;
             }
 
-            d.CurrentDir = "";
+            d.CurrentDir = "root";
             return d;
         }
 
@@ -36,7 +40,7 @@ namespace WebApplication10.Controllers
             string path;
             if (id == -1)
             {
-                if(Directory.GetParent(d.CurrentDir)!=null)
+                if(Directory.GetParent(d.CurrentDir)!=null && d.CurrentDir!="root")
                 {
                     path = Directory.GetParent(d.CurrentDir).FullName;
                 }
@@ -49,7 +53,7 @@ namespace WebApplication10.Controllers
                         k++;
                     }
 
-                    d.CurrentDir = "";
+                    d.CurrentDir = "root";
                     return d;
                 }
 
@@ -59,17 +63,22 @@ namespace WebApplication10.Controllers
             d.Children.Clear();
             d.Files = new List<string>();
             int key = 0;
-            foreach (var item in Directory.EnumerateDirectories(path))
-            {
-                //d.Children.Add(item.Substring(path.Length));
-                d.Children.Add(key, item);
-                key++;
-            }
 
+            try
+            {
+                foreach (var item in Directory.EnumerateDirectories(path))
+                {
+                    //d.Children.Add(item.Substring(path.Length));
+                    d.Children.Add(key, item);
+                    key++;
+                }
+           
             foreach (var item in Directory.EnumerateFiles(path))
             {
                 d.Files.Add(item.Substring(path.Length));
             }
+            }
+            catch (IOException io_ex) { }
             d.CurrentDir = path;
             if (Directory.GetParent(path) != null)
                 d.ParentDir = Directory.GetParent(path).FullName;

@@ -8,8 +8,9 @@
 -debug:full
 -nostdlib
 -nologo
-"D:\WEB\WebApplication10\src\WebApplication10\obj\Debug\net461\dotnet-compile.assemblyinfo.cs"
--out:"D:\WEB\WebApplication10\src\WebApplication10\bin\Debug\net461\WebApplication10.exe"
+"D:\GitHub\web_api_angularjs\src\WebApplication10\obj\Debug\net461\dotnet-compile.assemblyinfo.cs"
+-out:"D:\GitHub\web_api_angularjs\src\WebApplication10\bin\Debug\net461\WebApplication10.exe"
+-r:"C:\Users\PLESHA\.nuget\packages\Microsoft.AspNet.WebApi.Client\5.2.2\lib\net45\System.Net.Http.Formatting.dll"
 -r:"C:\Users\PLESHA\.nuget\packages\Microsoft.AspNetCore.Antiforgery\1.0.0-rc2-final\lib\net451\Microsoft.AspNetCore.Antiforgery.dll"
 -r:"C:\Users\PLESHA\.nuget\packages\Microsoft.AspNetCore.Authorization\1.0.0-rc2-final\lib\net451\Microsoft.AspNetCore.Authorization.dll"
 -r:"C:\Users\PLESHA\.nuget\packages\Microsoft.AspNetCore.Cors\1.0.0-rc2-final\lib\net451\Microsoft.AspNetCore.Cors.dll"
@@ -125,17 +126,19 @@
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Threading.Tasks.Parallel.dll"
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Xml.ReaderWriter.dll"
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Facades\System.Xml.XDocument.dll"
+-r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.Http.WebRequest.dll"
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\mscorlib.dll"
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll"
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Core.dll"
+-r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.Http.dll"
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Security.dll"
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.dll"
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.Linq.dll"
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.ComponentModel.DataAnnotations.dll"
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Numerics.dll"
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Runtime.Serialization.dll"
--resource:"D:\WEB\WebApplication10\src\WebApplication10\obj\Debug\net461\WebApplication10dotnet-compile.deps.json",WebApplication10.deps.json
-"D:\WEB\WebApplication10\src\WebApplication10\Program.cs"
-"D:\WEB\WebApplication10\src\WebApplication10\Startup.cs"
-"D:\WEB\WebApplication10\src\WebApplication10\Controllers\ValuesController.cs"
-"D:\WEB\WebApplication10\src\WebApplication10\Models\Directories.cs"
+-resource:"D:\GitHub\web_api_angularjs\src\WebApplication10\obj\Debug\net461\WebApplication10dotnet-compile.deps.json",WebApplication10.deps.json
+"D:\GitHub\web_api_angularjs\src\WebApplication10\Program.cs"
+"D:\GitHub\web_api_angularjs\src\WebApplication10\Startup.cs"
+"D:\GitHub\web_api_angularjs\src\WebApplication10\Controllers\ValuesController.cs"
+"D:\GitHub\web_api_angularjs\src\WebApplication10\Models\Directories.cs"

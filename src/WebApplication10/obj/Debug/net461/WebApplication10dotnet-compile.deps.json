@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETFramework,Version=v4.6.1/",
-    "signature": "bb6759268f330c82cbda9bb5b04bbfcf215f8a67"
+    "signature": "ce64cd9c001c2d19ea137dbd191bf1310410d66e"
   },
   "compilationOptions": {
     "defines": [
@@ -17,6 +17,8 @@
     ".NETFramework,Version=v4.6.1": {
       "WebApplication10/1.0.0": {
         "dependencies": {
+          "System.Net.Http.WebRequest": "4.0.0.0",
+          "Microsoft.AspNet.WebApi.Client": "5.2.2",
           "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
           "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
@@ -33,6 +35,15 @@
         }
       },
       "Libuv/1.9.0-rc2-20901": {},
+      "Microsoft.AspNet.WebApi.Client/5.2.2": {
+        "dependencies": {
+          "Newtonsoft.Json": "8.0.3",
+          "System.Net.Http": "4.0.0.0"
+        },
+        "compile": {
+          "lib/net45/System.Net.Http.Formatting.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/1.0.0-rc2-final": {
         "dependencies": {
           "Microsoft.AspNetCore.DataProtection": "1.0.0-rc2-final",
@@ -1138,6 +1149,11 @@
           "mscorlib": "4.0.0.0"
         }
       },
+      "System.Net.Http.WebRequest/4.0.0.0": {
+        "compile": {
+          ".NETFramework/v4.6.1/System.Net.Http.WebRequest.dll": {}
+        }
+      },
       "mscorlib/4.0.0.0": {
         "compile": {
           ".NETFramework/v4.6.1/mscorlib.dll": {}
@@ -1151,6 +1167,11 @@
       "System.Core/4.0.0.0": {
         "compile": {
           ".NETFramework/v4.6.1/System.Core.dll": {}
+        }
+      },
+      "System.Net.Http/4.0.0.0": {
+        "compile": {
+          ".NETFramework/v4.6.1/System.Net.Http.dll": {}
         }
       },
       "System.Security/4.0.0.0": {
@@ -1187,6 +1208,8 @@
     ".NETFramework,Version=v4.6.1/": {
       "WebApplication10/1.0.0": {
         "dependencies": {
+          "System.Net.Http.WebRequest": "4.0.0.0",
+          "Microsoft.AspNet.WebApi.Client": "5.2.2",
           "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
           "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
@@ -1203,6 +1226,15 @@
         }
       },
       "Libuv/1.9.0-rc2-20901": {},
+      "Microsoft.AspNet.WebApi.Client/5.2.2": {
+        "dependencies": {
+          "Newtonsoft.Json": "8.0.3",
+          "System.Net.Http": "4.0.0.0"
+        },
+        "runtime": {
+          "lib/net45/System.Net.Http.Formatting.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/1.0.0-rc2-final": {
         "dependencies": {
           "Microsoft.AspNetCore.DataProtection": "1.0.0-rc2-final",
@@ -2214,9 +2246,11 @@
           "lib/net46/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "System.Net.Http.WebRequest/4.0.0.0": {},
       "mscorlib/4.0.0.0": {},
       "System/4.0.0.0": {},
       "System.Core/4.0.0.0": {},
+      "System.Net.Http/4.0.0.0": {},
       "System.Security/4.0.0.0": {},
       "System.Xml/4.0.0.0": {},
       "System.Xml.Linq/4.0.0.0": {},
@@ -2235,6 +2269,11 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-NW+YOuRDrlmGM6yjSRjJUqlHukDEqUTuZKVJvEzWV4LH8wEKqrmVcxTqAab87+UiQ3KOLsyaBJ3ZNdmzxFUTig=="
+    },
+    "Microsoft.AspNet.WebApi.Client/5.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YVq+s0WeXrPxJk57CoElbtMYf95j76uJcW6nue3Cs4eIer9sgUp4rasSo0gALX3ls1Zf2jMceOLik9X/sJyrwA=="
     },
     "Microsoft.AspNetCore.Antiforgery/1.0.0-rc2-final": {
       "type": "package",
@@ -2866,6 +2905,11 @@
       "serviceable": true,
       "sha512": "sha512-IxOLcwl5A0Lm1s2FIUh5klV+Fi0tUE/5OltvIkZdV7phcWVfgBlCRlgxweaXVrCTI+9TZ8TihVutVaA+PC95lg=="
     },
+    "System.Net.Http.WebRequest/4.0.0.0": {
+      "type": "referenceassembly",
+      "serviceable": false,
+      "sha512": ""
+    },
     "mscorlib/4.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
@@ -2877,6 +2921,11 @@
       "sha512": ""
     },
     "System.Core/4.0.0.0": {
+      "type": "referenceassembly",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Net.Http/4.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

@@ -32,6 +32,21 @@
           }
         }
       },
+      "Microsoft.AspNet.WebApi.Client/5.2.2": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "6.0.4"
+        },
+        "frameworkAssemblies": [
+          "System.Net.Http"
+        ],
+        "compile": {
+          "lib/net45/System.Net.Http.Formatting.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Net.Http.Formatting.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/1.0.0-rc2-final": {
         "type": "package",
         "dependencies": {
@@ -1739,6 +1754,18 @@
         "runtimes/win7-x64/native/libuv.dll",
         "runtimes/win7-x86/native/libuv.dll",
         "thirdpartynotices.txt"
+      ]
+    },
+    "Microsoft.AspNet.WebApi.Client/5.2.2": {
+      "sha512": "YVq+s0WeXrPxJk57CoElbtMYf95j76uJcW6nue3Cs4eIer9sgUp4rasSo0gALX3ls1Zf2jMceOLik9X/sJyrwA==",
+      "type": "package",
+      "files": [
+        "Microsoft.AspNet.WebApi.Client.5.2.2.nupkg.sha512",
+        "Microsoft.AspNet.WebApi.Client.nuspec",
+        "lib/net45/System.Net.Http.Formatting.dll",
+        "lib/net45/System.Net.Http.Formatting.xml",
+        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll",
+        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/1.0.0-rc2-final": {
@@ -5222,6 +5249,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Microsoft.AspNet.WebApi.Client >= 5.2.2",
       "Microsoft.AspNetCore.Mvc >= 1.0.0-rc2-final",
       "Microsoft.AspNetCore.Server.IISIntegration >= 1.0.0-rc2-final",
       "Microsoft.AspNetCore.Server.Kestrel >= 1.0.0-rc2-final",
@@ -5233,7 +5261,9 @@
       "Microsoft.Extensions.Logging.Console >= 1.0.0-rc2-final",
       "Microsoft.Extensions.Logging.Debug >= 1.0.0-rc2-final"
     ],
-    ".NETFramework,Version=v4.6.1": []
+    ".NETFramework,Version=v4.6.1": [
+      "System.Net.Http.WebRequest >= 4.0.0"
+    ]
   },
   "tools": {
     ".NETCoreApp,Version=v1.0": {
