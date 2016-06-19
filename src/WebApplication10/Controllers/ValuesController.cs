@@ -21,15 +21,7 @@ namespace WebApplication10.Controllers
         [HttpGet]
         public MyDirectories Get()
         {
-            int key = 0;
-            d.Children.Clear();
-            d.CurrentDir = "root";
-            foreach (var s in Directory.GetLogicalDrives().ToList())
-            {
-                d.Children.Add(key, s);
-                key++;
-                
-            }
+            d.GetRoot();
             return d;
         }
 
@@ -43,27 +35,20 @@ namespace WebApplication10.Controllers
 
             string path;
             if (id == -1)
+
             {
-                if(Directory.GetParent(d.CurrentDir)!=null && d.CurrentDir!="root")
+                if (Directory.GetParent(d.CurrentDir) != null && d.CurrentDir != "root")
                 {
                     path = Directory.GetParent(d.CurrentDir).FullName;
                 }
-                else {
-                    int k = 0;
-                    d.Children.Clear();
-                    d.Files.Clear();
-                    foreach (var s in Directory.GetLogicalDrives().ToList())
-                    {
-                        d.Children.Add(k, s);
-                        k++;
-                    }
-
-                    d.CurrentDir = "root";
+                else
+                {
+                    d.GetRoot();
                     return d;
                 }
 
             }
-            else { path = d.Children[id]; }
+            else { path = d.Children[id][0]; }
 
             d.Children.Clear();
             d.Files = new List<string>();
@@ -74,18 +59,18 @@ namespace WebApplication10.Controllers
                 foreach (var item in Directory.EnumerateDirectories(path))
                 {
                     //d.Children.Add(item.Substring(path.Length));
-                    d.Children.Add(key, item);
+                    d.Children.Add(key, new List<string> { item, item.Substring(path.Length) });
                     key++;
                 }
-
+                string p = path + @"\";
                 foreach (var item in Directory.EnumerateFiles(path))
                 {
-                    d.Files.Add(item.Substring(path.Length));
+                    d.Files.Add(item.Substring(p.LastIndexOf(@"\") + 1));
                 }
             }
-            catch (IOException io_ex) { }
-            catch (UnauthorizedAccessException ua_ex) { }
-            
+            catch (IOException) { }
+            catch (UnauthorizedAccessException) { }
+
             d.CountFilesSize(path);
             d.CurrentDir = path;
             if (Directory.GetParent(path) != null)

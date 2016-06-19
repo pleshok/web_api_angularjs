@@ -11,32 +11,32 @@
     <title></title>
 </head>
 <body ng-controller="directoriesController">
-    <table class="table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Less 10 mb</th>
-                <th>10 mb - 50 mb</th>
-                <th>More 100 mb</th>
-            </tr>
-            <tr>
-                <td>{{Directories.Sf_count}}</td>
-                <td>{{Directories.Mf_count}}</td>
-                <td>{{Directories.Lf_count}}</td>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+                <tr style="background-color:lightgrey;">
+                    <th>Less 10 mb</th>
+                    <th>10 mb - 50 mb</th>
+                    <th>More 100 mb</th>
+                </tr>
+                <tr>
+                    <td>{{Directories.Sf_count}}</td>
+                    <td>{{Directories.Mf_count}}</td>
+                    <td>{{Directories.Lf_count}}</td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
 
-    <p><strong>Current path:</strong> {{Directories.CurrentDir}} </p>
-    
+        <p><strong>Current path:</strong> {{Directories.CurrentDir}} </p>
 
-    <div>
-        <ul class="list-group">
-            <li class="list-group-item" ng-click="getDir('-1')"><strong>..</strong></li>
-            <li class="list-group-item" ng-repeat="(key, value) in Directories.Children" ng-click="getDir(key)">{{value}}</li>
-        </ul>
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="file in Directories.Files" >{{file}}</li>
-        </ul></div>
+
+        <div>
+            <ul class="list-group">
+                <li class="list-group-item" ng-click="getDir('-1')"><a href="#"><strong>..</strong></a></li>
+                <li class="list-group-item" ng-repeat="(key, value) in Directories.Children" ><a href="" ng-click="getDir(key)">{{value[1]}}</a></li>
+                <li class="list-group-item" ng-repeat="file in Directories.Files">{{file}}</li>
+        </div>
+    </div>
 </body>
 </html>

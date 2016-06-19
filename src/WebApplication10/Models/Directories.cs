@@ -11,7 +11,7 @@ namespace WebApplication10.Models
     {
         public string CurrentDir { get; set; }
         public string ParentDir { get; set; }
-        public Dictionary<int, string> Children { get; set; }
+        public Dictionary<int, List<string>> Children { get; set; }
         public List<string> Files { get; set; }
         public int Sf_count { get; set; }
         public int Mf_count { get; set; }
@@ -19,7 +19,21 @@ namespace WebApplication10.Models
 
         public MyDirectories()
         {
-            Children = new Dictionary<int, string>();
+            Children = new Dictionary<int, List<string>>();
+        }
+
+        public void GetRoot()
+        {
+            this.Children.Clear();
+            this.CurrentDir = "root";
+            if (this.Files != null)
+                this.Files.Clear();
+            int k=0;
+            foreach (var s in Directory.GetLogicalDrives().ToList())
+            {
+                this.Children.Add(k, new List<string> {s, s});
+                k++;
+            }
         }
 
         public void CountFilesSize(string path)
