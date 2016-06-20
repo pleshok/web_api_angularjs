@@ -14,14 +14,20 @@ namespace WebApplication10.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-
-        static MyDirectories d = new MyDirectories();
+        static Dictionary<int, string> paths = new Dictionary<int, string> { };
+        static Dictionary<int, MyDirectories> cache = new Dictionary<int, MyDirectories> { };
 
         // GET api/values
         [HttpGet]
         public MyDirectories Get()
         {
+            MyDirectories d = new MyDirectories();
             d.GetRoot();
+            foreach (var dir in d.Children)
+            {
+                paths.Add(dir.Key, dir.Value[0]);
+            }
+            cache.Add(d.CurrentDir.GetHashCode(), d);
             return d;
         }
 
@@ -29,54 +35,57 @@ namespace WebApplication10.Controllers
         [HttpGet("{id}")]
         public MyDirectories Get(int id)
         {
-            d.Sf_count = 0;
-            d.Mf_count = 0;
-            d.Lf_count = 0;
+            MyDirectories d = new MyDirectories();
 
-            string path;
-            if (id == -1)
-
+            if (cache.TryGetValue(id, out d))
             {
-                if (Directory.GetParent(d.CurrentDir) != null && d.CurrentDir != "root")
+                return d;
+            }
+            else
+            {
+                d = new MyDirectories();
+                d.CurrentDir = paths[id];
+
+                if (Directory.GetParent(d.CurrentDir) != null)
                 {
-                    path = Directory.GetParent(d.CurrentDir).FullName;
+                    d.ParentDir = (Directory.GetParent(d.CurrentDir).FullName).GetHashCode();
                 }
                 else
                 {
-                    d.GetRoot();
-                    return d;
+                    string r = "root";
+                    d.ParentDir = r.GetHashCode();
                 }
+
+                try
+                {
+                    foreach (var item in Directory.EnumerateDirectories(d.CurrentDir))
+                    {
+                        d.Children.Add(item.GetHashCode(), new List<string> { item, item.Substring(item.LastIndexOf(@"\") + 1) });
+                    }
+                   
+                    foreach (var item in Directory.EnumerateFiles(d.CurrentDir))
+                    {
+                        d.Files.Add(item.Substring(item.LastIndexOf(@"\") + 1));
+                    }
+                }
+                catch (IOException) { }
+                catch (UnauthorizedAccessException) { }
+
+                d.CountFilesSize(d.CurrentDir);
+                d.key = d.CurrentDir.GetHashCode();
+
+                foreach (var dir in d.Children)
+                {
+                    paths.Add(dir.Key, dir.Value[0]);
+                }
+                cache.Add(d.CurrentDir.GetHashCode(), d);
+
+                return d;
 
             }
-            else { path = d.Children[id][0]; }
 
-            d.Children.Clear();
-            d.Files = new List<string>();
-            int key = 0;
 
-            try
-            {
-                foreach (var item in Directory.EnumerateDirectories(path))
-                {
-                    //d.Children.Add(item.Substring(path.Length));
-                    d.Children.Add(key, new List<string> { item, item.Substring(path.Length) });
-                    key++;
-                }
-                string p = path + @"\";
-                foreach (var item in Directory.EnumerateFiles(path))
-                {
-                    d.Files.Add(item.Substring(p.LastIndexOf(@"\") + 1));
-                }
-            }
-            catch (IOException) { }
-            catch (UnauthorizedAccessException) { }
 
-            d.CountFilesSize(path);
-            d.CurrentDir = path;
-            if (Directory.GetParent(path) != null)
-                d.ParentDir = Directory.GetParent(path).FullName;
-
-            return d;
         }
 
         // POST api/values

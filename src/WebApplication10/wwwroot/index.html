@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-resource.js"></script>
     <script src="app.js"></script>
     <title></title>
 </head>
@@ -33,9 +33,10 @@
 
         <div>
             <ul class="list-group">
-                <li class="list-group-item" ng-click="getDir('-1')"><a href="#"><strong>..</strong></a></li>
-                <li class="list-group-item" ng-repeat="(key, value) in Directories.Children" ><a href="" ng-click="getDir(key)">{{value[1]}}</a></li>
+                <li class="list-group-item" ng-click="getDir(Directories.ParentDir)"><a href=""><strong>..</strong></a></li>
+                <li class="list-group-item" ng-repeat="(key, value) in Directories.Children"><a href="" ng-click="getDir(key)">{{value[1]}}</a></li>
                 <li class="list-group-item" ng-repeat="file in Directories.Files">{{file}}</li>
+            </ul>
         </div>
     </div>
 </body>
